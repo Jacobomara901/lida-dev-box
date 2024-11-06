@@ -11,10 +11,7 @@ services:
     tty: true
     stdin_open: true
     environment:
-      EXPO_USERNAME: 
-      EXPO_PASSWORD: 
-      QR_LINK:
-    command: /bin/sh -c "export EXPO_PACKAGER_PROXY_URL=$QR_LINK; chmod +x ./start.sh && echo $EXPO_PASSWORD | npx expo login -u $EXPO_USERNAME  && ./start.sh"
-
-
-      
+      - EXPO_USERNAME
+      - EXPO_PASSWORD
+      - QR_LINK
+    command: /bin/sh -c "export EXPO_PACKAGER_PROXY_URL=$QR_LINK; chmod +x ./start.sh && echo $EXPO_PASSWORD | npx expo login -u $EXPO_USERNAME && ./start.sh"
