@@ -5,14 +5,12 @@ services:
       - "$LIDA_CLONE/app-configs:/usr/local/aspen-discovery/code/aspen_app/app-configs"
       - "./entrypoint.sh:/usr/local/aspen-discovery/code/aspen_app/entrypoint.sh"
     working_dir: "/usr/local/aspen-discovery/code/aspen_app"
-    ports:
-      - "8088:8081"
     container_name: containerlida
+    network_mode: "host"
     platform: linux/x86_64
     tty: true
     stdin_open: true
     environment:
       - EXPO_USERNAME
       - EXPO_PASSWORD
-      - QR_LINK
     command: /bin/sh -c " chmod +x ./entrypoint.sh && ./entrypoint.sh"
