@@ -13,4 +13,9 @@ services:
     environment:
       - EXPO_USERNAME
       - EXPO_PASSWORD
+      - API_KEY_1
+      - API_KEY_2
+      - API_KEY_3
+      - API_KEY_4
+      - API_KEY_5
     command: /bin/sh -c " chmod +x ./entrypoint.sh && ./entrypoint.sh"
