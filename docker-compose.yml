@@ -3,6 +3,7 @@ services:
     image: homeserv.uk/lida-base-image
     volumes:
       - "$LIDA_CLONE/app-configs:/usr/local/aspen-discovery/code/aspen_app/app-configs"
+      - "./entrypoint.sh:/usr/local/aspen-discovery/code/aspen_app/entrypoint.sh"
     working_dir: "/usr/local/aspen-discovery/code/aspen_app"
     ports:
       - "8088:8081"
@@ -14,4 +15,4 @@ services:
       - EXPO_USERNAME
       - EXPO_PASSWORD
       - QR_LINK
-    command: /bin/sh -c "export EXPO_PACKAGER_PROXY_URL=$QR_LINK; chmod +x ./start.sh && echo $EXPO_PASSWORD | npx expo login -u $EXPO_USERNAME && ./start.sh"
+    command: /bin/sh -c " chmod +x ./entrypoint.sh && ./entrypoint.sh"
