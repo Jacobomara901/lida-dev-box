@@ -5,8 +5,11 @@ services:
       - "$LIDA_CLONE/app-configs:/usr/local/aspen-discovery/code/aspen_app/app-configs"
       - "./entrypoint.sh:/usr/local/aspen-discovery/code/aspen_app/entrypoint.sh"
     working_dir: "/usr/local/aspen-discovery/code/aspen_app"
+    networks:
+      pihole_pihole_network:
     ports:
-      - "8088:8081"
+      - "8081:8081"
+      - "80:80"
     container_name: containerlida
     platform: linux/x86_64
     tty: true
@@ -21,3 +24,14 @@ services:
       - API_KEY_4
       - API_KEY_5
     command: /bin/sh -c " chmod +x ./entrypoint.sh && ./entrypoint.sh"
+
+networks:
+  pihole_pihole_network:
+    external: true
+  #   driver: macvlan
+  #   driver_opts:
+  #     parent: enp4s0
+  #   ipam:
+  #     config:
+  #       - subnet: 192.168.0.0/24 #update if needed
+  #         gateway: 192.168.0.1 #update if needed
